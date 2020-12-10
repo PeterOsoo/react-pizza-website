@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import Navbar from "../Navbar/Navbar"
+import Sidebar from "../Sidebar"
 
 import {
 	HeroContainer,
@@ -11,10 +12,18 @@ import {
 } from "./HeroElements"
 
 const Hero = () => {
+	const [isOpen, setIsOpen] = useState(false)
+
+	const toggle = () => {
+		setIsOpen(!isOpen)
+	}
+
 	return (
 		<div>
 			<HeroContainer>
-				<Navbar />
+				<Navbar toggle={toggle} />
+				<Sidebar isOpen={isOpen} toggle={toggle} />
+
 				<HeroContent>
 					<HeroItems>
 						<HeroH1>Greatest Pizza Ever</HeroH1>
